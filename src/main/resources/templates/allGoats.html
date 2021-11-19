@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="form-group blu-margin">
+    <!--/*@thymesVar id="goats" type="com.williamspires.bumblewebapp.models.Goats"*/-->
+    <!--/*@thymesVar id="goat" type="com.williamspires.bumblewebapp.models.Goats"*/-->
+    <table>
+        <tbody>
+        <tr>
+            <th style="text-align: center;"> Goat ID </th>
+            <th style="text-align: center;"> Goat Name </th>
+            <th style="text-align: center;">  Owner ID  </th>
+        </tr>
+        <tr th:if="${goats.empty}">
+            <td colspan="2"> No Goats Available </td>
+        </tr>
+        <tr th:each="goat : ${goats}">
+            <td style="text-align: center;"><span th:text="${goat.id}"> ID </span></td>
+            <td style="text-align: center;"><span th:text="${goat.name}"> Name </span></td>
+            <td style="text-align: center;"><span th:text="${goat.ownerId}"> Owner ID</span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
