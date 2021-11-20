@@ -29,7 +29,7 @@ public class GoatController {
     public String getFarmersGoats(@PathVariable("farmerId") String farmerId, Model model) {
         List<Goats> farmersGoats = goatRepository.findGoatsByOwnerId(farmerId);
         model.addAttribute("goats", farmersGoats);
-        return "farmersGoats";
+        return "farmerGoats";
     }
 
     @GetMapping("/goats/slideshow")
@@ -51,5 +51,12 @@ public class GoatController {
         Goats goat = oGoat.get();
         model.addAttribute("goat", goat);
         return "goatById";
+    }
+
+    @GetMapping("/goats/meet/{id}")
+    public String meetGoatsByFarmerId(@PathVariable("id") String id, Model model) {
+        List<Goats> farmersGoats = goatRepository.findGoatsByOwnerId(id);
+        model.addAttribute("goats", farmersGoats);
+        return "meetYourGoats";
     }
 }
